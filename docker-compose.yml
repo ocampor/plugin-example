@@ -1,0 +1,20 @@
+version: "3.6"
+
+services:
+  cache:
+    image: ocampor/rescore-plugin
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile
+      target: cache
+    ports:
+      - 9201:9200
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    volumes:
+      - elastic-data:/usr/share/elasticsearch/data
+
+volumes: 
+  elastic-data:
+    driver: local
