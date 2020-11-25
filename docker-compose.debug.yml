@@ -1,0 +1,7 @@
+version: "3.6"
+services:
+  cache:
+    environment:
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=*:4000,suspend=y
+    ports:
+      - 5005:4000

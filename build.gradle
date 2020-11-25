@@ -16,6 +16,12 @@ buildscript {
 apply plugin: "elasticsearch.esplugin"
 apply plugin: "elasticsearch.yaml-rest-test"
 
+dependencies {
+  // This dependency is required by the yamlRestTest framework, but for some reason it is not
+  // part of its dependencies.
+  yamlRestTestCompile group: "org.apache.logging.log4j", name: "log4j-core", version: "2.11.1"
+}
+
 esplugin {
   name "example-rescore"
   description "An example plugin implementing rescore and verifying that plugins *can* implement rescore"
